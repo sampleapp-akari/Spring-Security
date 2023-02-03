@@ -1,0 +1,13 @@
+version: '3.3'
+services:
+  keycloak:
+    ports:
+        - '18080:8080'
+    container_name: keycloak
+    environment:
+        - KEYCLOAK_USER=admin
+        - KEYCLOAK_PASSWORD=admin
+        - KEYCLOAK_IMPORT=/tmp/todoapi_realm.json
+    volumes:
+        - ./todoapi_realm.json:/tmp/todoapi_realm.json
+    image: jboss/keycloak:12.0.4
